@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import NameCard from './components/NameCard';
+import LikeButton from './components/LikeButton';
 
+const tags=['恐龍','足球小子'];
 class App extends Component {
   render() {
     return (
@@ -13,14 +16,16 @@ class App extends Component {
             你可以在 <code>src/App.js</code> 文件中修改。
           </p>
           <a
-            className = "App-link"
-            href      = "https://reactjs.org"
-            target    = "_blank"
-            rel       = "noopener noreferrer"
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Learn React
           </a>
         </header>
+        <NameCard name='viking' number={1234567890} tags={tags}/>
+        <LikeButton/>
       </div>
     );
   }
