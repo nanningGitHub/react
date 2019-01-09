@@ -2,7 +2,7 @@ import React from 'react'
 export default class CommentBox extends React.Component {
     constructor(props) {
         super(props)
-        this.handleSubmit=this.handleSubmit.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this);
         // 受控组件改为非受控组件
         // this.state = {
         //     value: ''
@@ -15,8 +15,9 @@ export default class CommentBox extends React.Component {
     // }
     handleSubmit(event){
         // alert(this.state.value);
+        
         this.props.onAddComment(this.textInput.value)
-        event.prevenDefault() //禁止form提交跳转
+        event.preventDefault(); //禁止form提交跳转
     }
     render() {
         return (
