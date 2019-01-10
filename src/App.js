@@ -13,14 +13,14 @@ import ThemedBar from './components/ThemedBar';
 
 const themes={
   light:{
-    className:'btn btn-primary',
-    bgColor:'#eeeeee',
-    color:'#000'
+    className: 'btn btn-primary',
+    bgColor  : '#eeeeee',
+    color    : '#000'
   },
   dark:{
-    className:'btn btn-light',
-    bgColor:'#222222',
-    color:'#fff'
+    className: 'btn btn-light',
+    bgColor  : '#222222',
+    color    : '#fff'
   }
 }
 
@@ -28,12 +28,23 @@ const themes={
 class App extends Component {
   constructor(props) {
     super(props)
+    this.state={
+      theme: 'light'
+    }
     // 留言框开始
     // this.state = {
     //   comments: ['this is my first reply']
     // }
     // this.addComment = this.addComment.bind(this);
      // 留言框结束
+
+     
+    //  this.changeTheme = this.changeTheme.bind(this);
+  }
+  changeTheme(theme){
+    this.setState({
+      theme,
+    })
   }
   // 留言框开始
   // addComment(comments){
@@ -47,7 +58,7 @@ class App extends Component {
     // const {comments} = this.state;  //展开式把comments取出
     // 留言框结束
     return ( 
-      <ThemeContext.Provider value={themes.light}>
+      <ThemeContext.Provider value={themes[this.state.theme]}>
           <div className = "App" >
             {/* <header className = "App-header" >
                 <img src = {logo} className = "App-logo" alt= "logo" / >
@@ -65,12 +76,10 @@ class App extends Component {
             commentsLength = {comments.length}
             onAddComment   = {this.addComment} / > */}
           {/* 留言框结束 */}
-          <a className='btn btn-light'>浅色主题</a>
-          <a className='btn btn-secondary'>深色主题</a>
-         
-          <ThemedBar/>
+          <a className='btn btn-light' onClick={()=>{this.changeTheme('light')}}>浅色主题</a>
+          <a className='btn btn-secondary'  onClick={()=>{this.changeTheme('dark')}}>深色主题</a>
           </div>
-         
+          <ThemedBar/>
       </ThemeContext.Provider>
     );
   }
